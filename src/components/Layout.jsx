@@ -13,11 +13,32 @@ export default function Layout() {
       <header className="bg-navy text-white">
         <nav
           aria-label="Main"
-          className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4"
+          className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between"
         >
-          <Link to="/" className="font-heading text-lg font-bold">
+          <Link
+            to="/"
+            className="font-heading text-lg font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
             Tech Mentorship 2026
           </Link>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+            {[
+              ["About", "/#about"],
+              ["Curriculum", "/#curriculum"],
+              ["Mentors", "/#mentors"],
+              ["FAQ", "/#faq"],
+              ["Join", "/#signup"],
+            ].map(([label, href]) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  className="hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </nav>
       </header>
 
