@@ -17,7 +17,7 @@ const points = [
 
 export default function About() {
   return (
-    <section id="about" className="scroll-mt-4 bg-ice">
+    <section id="about" className=" bg-ice">
       <div className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="font-heading text-3xl font-bold text-navy">
           About the program
