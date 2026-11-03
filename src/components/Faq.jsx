@@ -6,7 +6,7 @@ export default function Faq() {
   const [openId, setOpenId] = useState(null);
 
   return (
-    <section id="faq" className="scroll-mt-4 bg-white">
+    <section id="faq" className=" bg-white">
       <div className="mx-auto max-w-3xl px-4 py-16">
         <h2 className="font-heading text-3xl font-bold text-navy">
           Frequently asked questions

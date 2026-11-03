@@ -86,7 +86,7 @@ async function handleSubmit(e) {
 }
 
   return (
-    <section id="signup" className="scroll-mt-4 bg-ice">
+    <section id="signup" className=" bg-ice">
       <div className="mx-auto max-w-xl px-4 py-16">
         <h2 className="font-heading text-3xl font-bold text-navy">
           Join the program
