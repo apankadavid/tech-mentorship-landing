@@ -3,7 +3,7 @@ import WeekCard from "./WeekCard";
 
 export default function Curriculum() {
   return (
-    <section id="curriculum" className="scroll-mt-4 bg-white">
+    <section id="curriculum" className="scroll-mt-28 bg-ice">
       <div className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="font-heading text-3xl font-bold text-navy">
           Curriculum
