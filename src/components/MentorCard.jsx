@@ -1,17 +1,28 @@
 export default function MentorCard({ mentor }) {
   return (
-    <article className="rounded-lg border border-slate/20 bg-white p-6">
-      <div
-        aria-hidden="true"
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-brand font-heading text-xl font-bold text-white"
-      >
-        {mentor.name.charAt(0)}
+    <article className="overflow-hidden rounded-xl border border-navy/10 bg-white">
+      <div className="flex items-center gap-5 bg-ice p-6">
+        <img
+          src={mentor.image}
+          alt=""
+          width="96"
+          height="96"
+          loading="lazy"
+          className="h-24 w-24 shrink-0 rounded-full border border-navy/10 bg-white object-cover object-top"
+        />
+        <div>
+          <h3 className="font-heading text-lg font-bold text-navy">
+            {mentor.track}
+          </h3>
+          <p className="mt-1 text-sm font-semibold text-slate">
+            Mentor to be announced
+          </p>
+        </div>
       </div>
-      <h3 className="mt-4 font-heading text-xl font-bold text-navy">
-        {mentor.name}
-      </h3>
-      <p className="text-sm font-semibold text-teal-dark">{mentor.track}</p>
-      <p className="mt-3 text-slate">{mentor.bio}</p>
+
+      <div className="p-6">
+        <p className="leading-relaxed text-slate">{mentor.bio}</p>
+      </div>
     </article>
   );
 }
