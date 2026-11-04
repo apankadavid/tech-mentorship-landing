@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 const links = [
   ["About", "/#about"],
@@ -11,6 +13,24 @@ const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 export default function Layout() {
+  const [open, setOpen] = useState(false);
+  const buttonRef = useRef(null);
+
+  function closeMenu() {
+    setOpen(false);
+  }
+
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (e.key === "Escape" && open) {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <div className="bg-ice">
       <a
@@ -20,13 +40,14 @@ export default function Layout() {
         Skip to main content
       </a>
 
-      <header className="z-40 px-4 pt-4 sm:sticky sm:top-0 sm:px-6">
+      <header className="sticky top-0 z-40 px-4 pt-4 sm:px-6">
         <nav
           aria-label="Main"
-          className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 gap-y-3 rounded-2xl border border-navy/10 bg-white/85 px-4 py-3 text-navy shadow-sm backdrop-blur-md sm:rounded-full sm:px-6"
+          className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 rounded-2xl border border-navy/10 bg-white/85 px-4 py-3 text-navy shadow-sm backdrop-blur-md lg:rounded-full lg:px-6"
         >
           <Link
             to="/"
+            onClick={closeMenu}
             className={`flex items-center gap-3 rounded-lg ${focusRing}`}
           >
             <span
@@ -44,13 +65,35 @@ export default function Layout() {
             </span>
           </Link>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+          <button
+            ref={buttonRef}
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls="site-menu"
+            aria-label="Main menu"
+            className={`flex h-11 w-11 items-center justify-center rounded-lg border border-navy/20 lg:hidden ${focusRing}`}
+          >
+            {open ? (
+              <X aria-hidden="true" className="h-6 w-6" />
+            ) : (
+              <Menu aria-hidden="true" className="h-6 w-6" />
+            )}
+          </button>
+
+          <div
+            id="site-menu"
+            className={`${
+              open ? "flex" : "hidden"
+            } mt-3 w-full flex-col gap-4 border-t border-navy/10 pt-3 lg:mt-0 lg:flex lg:w-auto lg:flex-row lg:items-center lg:gap-6 lg:border-0 lg:pt-0`}
+          >
+            <ul className="flex flex-col text-base font-semibold lg:flex-row lg:gap-5 lg:text-sm">
               {links.map(([label, href]) => (
                 <li key={label}>
                   <a
                     href={href}
-                    className={`rounded hover:underline ${focusRing}`}
+                    onClick={closeMenu}
+                    className={`block rounded py-3 hover:underline lg:py-0 ${focusRing}`}
                   >
                     {label}
                   </a>
@@ -60,7 +103,8 @@ export default function Layout() {
 
             <a
               href="/#signup"
-              className={`inline-flex items-center gap-2 rounded-full bg-teal-dark px-5 py-2 text-sm font-semibold text-white hover:bg-brand ${focusRing}`}
+              onClick={closeMenu}
+              className={`inline-flex items-center justify-center gap-2 rounded-full bg-teal-dark px-5 py-3 text-sm font-semibold text-white hover:bg-brand lg:py-2 ${focusRing}`}
             >
               Join the Program
               <span aria-hidden="true">→</span>
