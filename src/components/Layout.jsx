@@ -43,7 +43,7 @@ export default function Layout() {
       <header className="sticky top-0 z-40 px-4 pt-4 sm:px-6">
         <nav
           aria-label="Main"
-          className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 rounded-2xl border border-navy/10 bg-white/85 px-4 py-3 text-navy shadow-sm backdrop-blur-md lg:rounded-full lg:px-6"
+          className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-3 lg:gap-x-6 rounded-2xl border border-navy/10 bg-white/85 px-4 py-3 text-navy shadow-sm backdrop-blur-md lg:rounded-full lg:px-6"
         >
           <Link
             to="/"
@@ -60,7 +60,7 @@ export default function Layout() {
               aria-hidden="true"
               className="hidden h-6 w-px bg-navy/20 sm:block"
             />
-            <span className="font-heading text-lg font-bold">
+            <span className="font-heading text-base font-bold sm:text-lg">
               Tech Mentorship 2026
             </span>
           </Link>
