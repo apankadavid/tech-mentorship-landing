@@ -33,6 +33,9 @@ npm run build    # production build
 | Mobile (375px) | Desktop (1280px) |
 |---|---|
 | ![Mobile](screenshots/home-mobile-375.png) | ![Desktop](screenshots/home-desktop-1280.png) |
+| Mobile menu open |
+|---|
+| ![Mobile menu](screenshots/mobile-menu-open.png) |
 
 ## Lighthouse scores (live site)
 
